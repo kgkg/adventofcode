@@ -1,0 +1,21 @@
+{
+    "name": "konradgalezowski/adventofcode",
+    "description": "Advent of Code solutions using PHP and TDD",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "AoC_2021\\": "2021/src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Konrad",
+            "email": "konradg2@o2.pl"
+        }
+    ],
+    "minimum-stability": "RC"
+}
