@@ -1,9 +1,8 @@
 <?php
 
-namespace AoC_2021\Day11;
+namespace Test\Year2021\Day11;
 
-include "./App.php";
-
+use AdventOfCode\Year2021\Day11\App;
 use PHPUnit\Framework\TestCase;
 
 final class AppTest extends TestCase
@@ -197,7 +196,6 @@ final class AppTest extends TestCase
         // then
         $this->assertSame($expectedIterationNr, $iterationNr);
     }
-
 
     private function parseGrid(string $gridAsString): array
     {

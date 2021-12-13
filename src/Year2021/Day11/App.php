@@ -1,6 +1,6 @@
 <?php
 
-namespace AoC_2021\Day11;
+namespace AdventOfCode\Year2021\Day11;
 
 final class App
 {
@@ -18,15 +18,6 @@ final class App
         for ($i = 0; $i < $iterationCount; $i++) {
             $this->nextStep();
         }
-    }
-
-    public function iterateUntilAllFlashed(): int
-    {
-        while ($this->allFlashed() === false) {
-            $this->nextStep();
-        }
-
-        return $this->iterationNr;
     }
 
     private function nextStep(): void
@@ -135,6 +126,28 @@ final class App
         $this->grid[$y][$x] = $power;
     }
 
+    public function iterateUntilAllFlashed(): int
+    {
+        while ($this->allFlashed() === false) {
+            $this->nextStep();
+        }
+
+        return $this->iterationNr;
+    }
+
+    private function allFlashed(): bool
+    {
+        $notFlashedCount = 0;
+
+        array_walk_recursive($this->grid, function (int $power) use (&$notFlashedCount) {
+            if ($power !== 0) {
+                $notFlashedCount++;
+            }
+        });
+
+        return $notFlashedCount === 0;
+    }
+
     public function totalFlashCount(): int
     {
         return $this->totalFlashCount;
@@ -150,18 +163,5 @@ final class App
         foreach ($this->grid as $row) {
             echo join("", $row) . "\n";
         }
-    }
-
-    private function allFlashed(): bool
-    {
-        $notFlashedCount = 0;
-
-        array_walk_recursive($this->grid, function (int $power) use (&$notFlashedCount) {
-            if ($power !== 0) {
-                $notFlashedCount++;
-            }
-        });
-
-        return $notFlashedCount === 0;
     }
 }
